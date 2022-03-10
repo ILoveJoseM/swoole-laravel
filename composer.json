@@ -1,0 +1,42 @@
+{
+  "name": "jose-chan/swoole-laravel",
+  "description": "swoole and laravel sticker",
+  "keywords": ["swoole", "laravle"],
+  "authors": [{
+    "name": "JoseChan",
+    "email": "524233828@qq.com"
+  }],
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": "^7.2",
+    "jose-chan/swoole": "^1.0",
+    "laravel/framework": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "JoseChan\\SwooleLaravel\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": [
+      ],
+      "providers": [
+        "JoseChan\\SwooleLaravel\\Providers\\SwooleLaravelProvider"
+      ]
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
