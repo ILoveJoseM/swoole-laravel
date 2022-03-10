@@ -19,6 +19,11 @@ use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Swoole\Server;
 
+/**
+ * http服务器
+ * Class LaravelServer
+ * @package JoseChan\SwooleLaravel\Server
+ */
 class LaravelServer extends HttpServer
 {
     use ServerTrait;
@@ -28,10 +33,12 @@ class LaravelServer extends HttpServer
     /** @var \App\Http\Kernel $kernel */
     private $kernel;
 
-    /** @var Response */
-    private $response = null;
-
-
+    /**
+     * worker进程启动回调
+     * worker启动时，初始化laravel框架
+     * @param Server $server
+     * @param int $workerId
+     */
     protected function onWorkerStart(Server $server, int $workerId)
     {
         // 这个用来初始化laravel框架
@@ -43,10 +50,17 @@ class LaravelServer extends HttpServer
         }
     }
 
+    /**
+     * 接收http请求
+     * 处理将swoole的http请求对象映射成laravel的http请求对象
+     * 并且将laravel的http响应对象，通过swoole的http响应对象发出去
+     * @param Request $request
+     * @param Response $response
+     * @return mixed|void
+     */
     protected function onRequest(Request $request, Response $response)
     {
         // 记录当前worker需要处理的的response
-//        $this->response = $response;
         $_GET = empty($request->get) ? [] : $request->get;
         $_POST = empty($request->post) ? [] : $request->post;
         $_REQUEST = array_merge($_GET, $_POST);
@@ -65,11 +79,9 @@ class LaravelServer extends HttpServer
             }
         }
 
-//        $response->end("A");
         $response->end($laravel_response->content());
 
         $this->kernel->terminate($laravel_request, $laravel_response);
-//        $this->response = null;// 销毁
 
         return;
     }

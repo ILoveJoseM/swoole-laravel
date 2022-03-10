@@ -8,15 +8,22 @@
 
 namespace JoseChan\SwooleLaravel\Utils;
 
-
+/**
+ * 协程对象
+ * Class Coroutine
+ * @package JoseChan\SwooleLaravel\Utils
+ */
 class Coroutine
 {
-
+    /** @var int 协程状态-已创建 */
     const STATUS_CREATED = 1;
+    /** @var int 协程状态-已结束 */
     const STATUS_FINISH = 2;
+    /** @var int 协程状态-有异常 */
     const STATUS_FAIL = 3;
 
-    static $finish = [self::STATUS_FINISH, self::STATUS_FAIL];
+    /** @var array $finish 这些状态算是结束了 */
+    public static $finish = [self::STATUS_FINISH, self::STATUS_FAIL];
 
     /** @var int $id 协程id */
     private $id;
@@ -75,6 +82,7 @@ class Coroutine
     }
 
     /**
+     * 获取执行结果
      * @return mixed
      */
     public function getResult()

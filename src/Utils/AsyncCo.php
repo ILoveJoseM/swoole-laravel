@@ -12,10 +12,16 @@ namespace JoseChan\SwooleLaravel\Utils;
 use Swoole\Coroutine;
 use JoseChan\SwooleLaravel\Utils\Coroutine as JcCoroutine;
 
+/**
+ * 协程工具
+ * Class AsyncCo
+ * @package JoseChan\SwooleLaravel\Utils
+ */
 class AsyncCo
 {
     /**
-     * 创建协程，返回协程对象
+     * 创建协程，返回自己组装的协程对象
+     * 当当前环境不在协程环境下，协程的方法体将立即执行
      * @param \Closure $task
      * @return \JoseChan\SwooleLaravel\Utils\Coroutine
      */
@@ -53,6 +59,8 @@ class AsyncCo
 
     /**
      * 等待所有协程执行结束
+     * TODO:该方法有点问题，不建议使用
+     * @deprecated
      * @param int $timeout millisecond
      */
     public static function wait($timeout = 0)
