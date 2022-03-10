@@ -10,7 +10,7 @@
   "type": "library",
   "require": {
     "php": "^7.2",
-    "jose-chan/swoole": "^1.0",
+    "jose-chan/swoole-server": "^1.0",
     "laravel/framework": "^5.6"
   },
   "autoload": {
