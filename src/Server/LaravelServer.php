@@ -13,8 +13,6 @@ use App\Http\Kernel;
 use Illuminate\Foundation\Application;
 use JoseChan\Swoole\Utils\HttpServer;
 use JoseChan\Swoole\Utils\Traits\ServerTrait;
-use JoseChan\SwooleLaravel\Utils\AsyncCo;
-use Swoole\Coroutine;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 use Swoole\Server;

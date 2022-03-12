@@ -9,8 +9,6 @@
 namespace JoseChan\SwooleLaravel\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use JoseChan\Swoole\Utils\Listener;
-use JoseChan\Swoole\Utils\Options;
 
 /**
  * Class SwooleLaravelProvider
